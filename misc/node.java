@@ -11,8 +11,8 @@ public class node
 		data=d;
 		
 	}
-	public static node th;
-	public  static node head;
+	public static node th=null;
+	public  static node head=null;
 	public static void main(String[] args)
 	{
 		String str;
@@ -20,7 +20,7 @@ public class node
 		System.out.println("Enter the input or for exit type 'exit' \n");
 		str=System.console().readLine();
 		
-		while( str.equals("exit")!= true);
+		while( str.equals("exit")!= true)
 		{
 			
 			d1=Integer.parseInt(str);
@@ -30,8 +30,11 @@ public class node
 			{
 				head=current;
 				count++;
+				System.out.println("Enter the input or for exit type 'exit' \n");
+				str=System.console().readLine();
+				continue;
+								
 			}	
-		
 			th=head;
 			while(th.next!= null)
 			{
@@ -41,20 +44,25 @@ public class node
 			th.next=current;
 			System.out.println("Enter the input or for exit type 'exit' \n");
 			str=System.console().readLine();
-		}	
+			if( str.equals("exit")== true)
+			{
+			System.out.println(" entered exit\n");
+			break;
+			}
+		}		
 		
-		if( str.equals("exit")== true)
+		if(head ==null)
+			System.out.println("There are no elements in the list") ;
+		else
 		{
-			System.out.println(" enterede exit\n");
-			return;
-		}
-		
-		th=head;
-		while (th.next!=  null)
-		{
+			th=head;
+			while(th.next!=null) 
+			{
+			System.out.println(th.data+"\t");
+			th=th.next;
+			}
 			System.out.println(th.data+"\t");
 		}
-		
 		
 	}
 	

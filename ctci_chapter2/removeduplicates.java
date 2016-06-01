@@ -46,7 +46,7 @@ public class removeduplicates extends node
 			}
 		}		
 		//printing the elements
-		/*if(head ==null)
+		if(head ==null)
 			System.out.println("There are no elements in the list") ;
 		else
 		{
@@ -57,7 +57,7 @@ public class removeduplicates extends node
 			th=th.next;
 			}
 			
-		}*/
+		}
 		
 		//to find duplicates
 		
@@ -72,14 +72,14 @@ public class removeduplicates extends node
 				{	prev=th;
 					while(prev.next !=search)
 					{ 
-						prev.next=prev.next;
+						prev=prev.next;
 					}						
 					prev.next=search.next;
-					search=prev;
+					search=prev.next;
 					continue;
 				}
 							
-				search.next=search.next;
+				search=search.next;
 			
 			}
 			th=th.next;

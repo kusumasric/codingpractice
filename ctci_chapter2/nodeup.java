@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//run time of algorithm is -o(n(n-1))==o(n^2)
 public class  nodeup
 {
 	int data;

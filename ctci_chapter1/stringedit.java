@@ -7,7 +7,6 @@ public class stringedit
 	public static void main(String[] args)
 	{
 		String st1,st2;
-		int greatcount=0 ;
 		st1=System.console().readLine();
 		st2=System.console().readLine();
 		if(st1.compareTo(st2) ==0 )
@@ -15,12 +14,9 @@ public class stringedit
 			System.out.println("the two strings are equal\n they are 0 edits away\n");			
 		}		
 		if (st1.length() >= st2.length())
-		{
-			greatcount=st1.length();
 			check(st1,st2);			
-		}
-		greatcount=st2.length();
-		check(st2,st1);
+		else
+			check(st2,st1);
 	}
 	
 	
