@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//runtime is 
 public class nodepartition
 {
 	int d;
@@ -10,7 +10,7 @@ public class nodepartition
 		d=data;	
 		next=null;
 	}
-	public static nodepartition head,th,replace,middle;
+	public static nodepartition head,th,replace,middle,sort;
 	public static void main(String[] args)
 	{
 		int n,count=0 ;
@@ -75,18 +75,48 @@ public class nodepartition
 				x=Integer.parseInt(System.console().readLine("Enter a number with in linked list\n")) ;
 				
 	    }
+	//sorting elements
+	th=head;
+	int c1=1,store=0;
+	while(c1 <= length)
+	{	
+		sort =th.next;
+		if(th.d < x)
+		{
+			th=th.next;
+			c1++;
+			continue;	  
+		}
+		else if(th.d > x)
+		{
+			sort=th;
+		    if(sort.d > x )
+			{
+				sort=sort.next;
+			}
+		
+			store=th.d;
+			th.d=sort.d;
+			sort.d=store;
+			th=th.next;
+			c++;
+			continue;
+			
+		}
+		
+			
+	}
 	// replacing the elements	
 		th=head;
-		int c1=1,store=0;
 		middle=head;
-		while(c1 <= (int)length/2)
+		while(c1 <=(int)length/2)
 		{
 			middle=middle.next;
 			c1++;
 		}
 		replace=middle;
 		c1=1;
-		while (c1 <= (int)length/2)
+		while (c1 <=(int)length/2)
 		{
 			if(th.d < x )
 			{
@@ -97,7 +127,7 @@ public class nodepartition
 			else if (th.d >= x ) 
 			{
 				middle=replace;
-				while(middle.d >= x)
+				while(middle.d >x)
 				{
 					middle=middle.next;
 				}
@@ -107,9 +137,10 @@ public class nodepartition
 				th=th.next;
 				c1++;
 				continue;
-			}	
-						
+			}
+			
 		}
+	
 		
 				
 		System.out.println("modified linked ist is\n");

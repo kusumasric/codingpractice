@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+//runtime is O(n),where n is number of elements
 public class Myqueue
 {
 	public static Stack <Integer> s1= new Stack <Integer>();

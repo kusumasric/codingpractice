@@ -65,29 +65,21 @@ public class bstwhile
 	}
 	public static void insert(bstwhile t,int d)
 	{
-		while(d <= t.data  )	
+		while(t.left !=null || t.right!=null )	
 		{
-			if(t.left!=null)
-			{		
+			if(d<=t.data && t.left!=null)
+			{	
 				t=t.left;
 				continue;
 			}
-			else
-				break;	
-				
-		}
-		
-		while(d > t.data)	
-		{
-			if(t.right!=null)	
-			{	
+			else if(d>t.data && t.right!=null)
+			{
 				t=t.right;
-				continue;	
-			}
+				continue;				
+			}	
 			else
-				break;	
-			
-		}
+				break;
+		}	
 		if(d<=t.data)
 			t.left=current;
 		else
