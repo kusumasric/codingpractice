@@ -41,15 +41,21 @@ public class student
 			}	
 		}
 		if(ch=='n')
-			System.out.println ("Entered the option to exit the student creation\n")
+			System.out.println ("Entered the option to exit the student creation\n");
 			
-		String choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name of student\n")	;
-		if(choise.equals("Rollnumber")==true  )
-			rolldisp(s1);
-		else if(choise .equals("Name "))
-			namedisp(s1);
-		else
-			disp(s1);
+		String choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
+		while(choise.equals("exit")!= true)
+		{	
+			if(choise.equals("Rollnumber")==true)
+				rolldisp(s1);
+			else if(choise.equals("Name") ==true)
+				namedisp(s1);
+			else 
+				disp(s1);
+			choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
+		}	
+		if(choise.equals("exit")== true)
+			return;
 		
 	}		
 	
@@ -83,7 +89,20 @@ public class student
 	}
 	public static void namedisp(student[] st )
 	{
-		
-		
+		student temp;
+		for(int i=0;i<c;i++)
+		{
+			for(int j=i+1;j<c;j++)
+			{
+				if(st[i].name.compareTo(st[j].name) >0)
+				{
+					temp=st[j];
+					st[j]=st[i];
+					st[i]=temp;
+				}	
+			}			
+		}  
+			
+		disp(st);		
 	}
 }
