@@ -13,36 +13,25 @@ public class student
 		rollno=r;
 		name=n;
 	}
-	public static student[] s1;
-	public static int c; 
 	public static void main(String[] args )
 	{
-		int no,studentcount;
+		int no;
+		ArrayList<student> s1=new ArrayList<student>() ;
 		String name;
-		studentcount=Integer.parseInt(System.console().readLine("Enter number of students"));
-		s1=new student[studentcount];
 		char ch=' ';
 		ch=System.console().readLine("enter y for to create a student and n for no").charAt(0);
 		while (ch == 'y')
 		{
-			if(c< studentcount)	
-			{
-				no=Integer.parseInt(System.console().readLine("enter roll number : "));
-				name=System.console().readLine("Enter the name : ");		
-				student s=new student(no,name);
-				s1[c++]=s;	
-				ch=System.console().readLine("enter y for to create a student and n for no").charAt(0);	
-				continue;
-			}
-			else
-			{
-				System.out.println("\n crossing the limit of number of students \n");
-				break;
-			}	
+			no=Integer.parseInt(System.console().readLine("enter roll number : "));
+			name=System.console().readLine("Enter the name : ");		
+			student s=new student(no,name);
+			s1.add(s);	
+			ch=System.console().readLine("enter y for to create a student and n for no").charAt(0);	
+			continue;
 		}
+		
 		if(ch=='n')
-			System.out.println ("Entered the option to exit the student creation\n");
-			
+		System.out.println ("Entered the option to exit the student creation\n");
 		String choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
 		while(choise.equals("exit")!= true)
 		{	
@@ -54,51 +43,50 @@ public class student
 				disp(s1);
 			choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
 		}	
-		if(choise.equals("exit")== true)
+		if(choise.equals("Exit")== true)
 			return;
 		
 	}		
 	
-	public static void disp(student[] s)
+	public static void disp(ArrayList<student> s)
 	{
-		for(int i=0;i<c;i++)
+		for(int i=0;i<s.size();i++)
 		{
-			System.out.println(s[i].rollno+"\t"+s[i].name);
-		}
-		
+			System.out.println(s.get(i).rollno+"\t"+s.get(i).name);
+		}		
 	}
 	
-	public static  void  rolldisp(student[] st)
+	public static  void  rolldisp(ArrayList<student> st)
 	{
 		student temp;
-		for(int i=0;i <c;i++)
+		for(int i=0;i < st.size();i++)
 		{
-			for(int j=i+1 ; j<c;j++)
+			for(int j=i+1 ; j < st.size();j++)
 			{
-				if(st[j].rollno< st[i].rollno )
-				{
-					temp=st[i];
-					st[i]=st[j];
-					st[j]=temp;
-					
+				if(st.get(j).rollno < st.get(i).rollno )
+				{					
+					temp=st.get(i);
+					st.set(i,st.get(j));
+					st.set(j,temp);					
 				}				
 			}				
 		}
 
 		disp(st);
 	}
-	public static void namedisp(student[] st )
+	
+	public static void namedisp(ArrayList<student> st )
 	{
 		student temp;
-		for(int i=0;i<c;i++)
+		for(int i=0;i<st.size();i++)
 		{
-			for(int j=i+1;j<c;j++)
+			for(int j=i+1;j<st.size();j++)
 			{
-				if(st[i].name.compareTo(st[j].name) >0)
+				if((st.get(i).name).compareTo(st.get(j).name) >0)
 				{
-					temp=st[j];
-					st[j]=st[i];
-					st[i]=temp;
+					temp=st.get(j);
+					st.set(j,st.get(i));
+					st.set(i,temp);
 				}	
 			}			
 		}  
