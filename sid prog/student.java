@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 
 //TODO: Use dynamic array in java . Then you dont need number of students before hand
 
@@ -15,37 +16,48 @@ public class student
 	}
 	public static void main(String[] args )
 	{
-		int no;
 		ArrayList<student> s1=new ArrayList<student>() ;
-		String name;
-		char ch=' ';
-		ch=System.console().readLine("enter y for to create a student and n for no").charAt(0);
-		while (ch == 'y')
+		String delimeter=System.console().readLine("Enter the delimeter you wish to use");
+		String input=System.console().readLine();
+		String[] splitarr ;
+		Pattern pattern1 = Pattern.compile("[a-zA-Z]");
+	
+		while (input.equals("exit")!= true )
 		{
-			no=Integer.parseInt(System.console().readLine("enter roll number : "));
-			name=System.console().readLine("Enter the name : ");		
-			student s=new student(no,name);
-			s1.add(s);	
-			ch=System.console().readLine("enter y for to create a student and n for no").charAt(0);	
-			continue;
-		}
-		
-		if(ch=='n')
-		System.out.println ("Entered the option to exit the student creation\n");
-		String choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
-		while(choise.equals("exit")!= true)
-		{	
-			if(choise.equals("Rollnumber")==true)
-				rolldisp(s1);
-			else if(choise.equals("Name") ==true)
-				namedisp(s1);
-			else 
-				disp(s1);
-			choise=System.console().readLine(" choose an option to display 1.Rollnumber 2.Name 3.Exit\n");
-		}	
-		if(choise.equals("Exit")== true)
-			return;
-		
+			splitarr=input.split(delimeter);
+			int no=0;
+			String name=" ";
+            if(splitarr[0].equals("I")== true )			
+			{
+				for( int i=1;i < splitarr.length; i++)
+				{
+					Matcher matcher = pattern1.matcher(splitarr[i]);
+					if(matcher.find())
+					{
+						name+=splitarr[i];
+					}	
+					else
+						no=Integer.parseInt(splitarr[i]);					
+				}								
+				student s=new student(no,name);
+				s1.add(s);									
+			}				
+			
+			else if(splitarr[0].equals("p")==true)
+			{
+				if (splitarr[1].equals("o")== true)
+				{
+					if(splitarr[2].equals("Rollno")== true)
+						rolldisp(s1);
+					else if(splitarr[2].equals("Name")== true)
+						namedisp(s1);					
+				}				
+				else 
+					disp(s1);
+			}
+			
+			input=System.console().readLine();	
+		}				
 	}		
 	
 	public static void disp(ArrayList<student> s)
