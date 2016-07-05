@@ -16,10 +16,10 @@ public class maxheap
 				int e=Integer.parseInt(temp[1]);
 			    insert(e);				
 			}		
-			else if(temp[0].equals("top")==true)
+			else if(temp[0].equals("topmax")==true)
 			{
 				int t=Integer.parseInt(temp[1]);
-				top(t);				
+				topmax(t);				
 			}	
             else if(temp[0].equals("disp")==true)		
 			{
@@ -53,13 +53,18 @@ public class maxheap
 			k=(int)(j-1)/2;
 		}
 	}
-	public static void top(int t)
+	public static void topmax(int t)
 	{
-		Collections.sort(heap);
-		for(int i=heap.size()-1; i>=heap.size()-t ;i--)
-		{
-			System.out.println(heap.get(i));
-		}		
+		int[t] topele;
+		int k=0;
+		while(k<= t)
+		{	
+			topele[k++]=heap.get(0);
+			heap.set(0,heap.get(heap.size()));
+		
+		
+		
+		
 	}
 	
 }
