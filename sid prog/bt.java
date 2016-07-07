@@ -49,7 +49,6 @@ public class bt
 	
 	public static void insert(bt cur,bt th)
 	{
-	
 		Random rand=new Random();
 		int r=rand.nextInt(2)+1;
 		if (r==1)
@@ -81,14 +80,18 @@ public class bt
 	{
 		int maxl=0;
 		int maxr=0;
-		if(rt==null)
-		   return 0;	
-        maxl=maxele(rt.left);
-		maxr=maxele(rt.right);
-		if(rt.left.ele > rt.right.ele && rt.left.ele> rt.ele)
-			 return rt.left.ele;
-		 else if(rt.right.ele>rt.left.ele && rt.right.ele > rt.ele)
-			 return rt.right.ele;
-		 return rt.ele;
+		if(rt == null)
+			return 0;
+		return Math.max(Math.max(maxele(rt.right),maxele(rt.left)),rt.ele);
+		/*if(rt.left!=null)
+			maxl=maxele(rt.left);
+		if(rt.right!=null)
+			maxr=maxele(rt.right);
+		if(Math.max(maxl,maxr)==Math.max(maxl,rt.ele))
+			return maxl;
+		else if(Math.max(maxr,maxl) ==Math.max(maxr,rt.ele))
+			return maxr;
+		return rt.ele;*/
+			
 	}
 }
